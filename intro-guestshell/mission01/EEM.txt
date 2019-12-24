@@ -1,0 +1,12 @@
+ conf t
+ event manager applet config-diff-to-spark
+  event syslog pattern SYS-5-CONFIG_I
+  action 1.0 cli command "enable"
+  ! MISSION TODO 1: replace MISSION with the appropriate keywords to run Python script
+  action 2.0 cli command "guestshell run python /home/guestshell/dnav3-code/intro-guestshell/mission01/mission.py"
+  ! END MISSION SECTION 1
+  action 3.0 regexp "ERROR" "$_cli_result"
+  action 4.0 if $_regexp_result eq "1"
+  action 5.0 syslog msg "$_cli_result"
+  action 6.0 end
+ end
