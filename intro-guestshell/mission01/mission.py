@@ -89,7 +89,7 @@ def save_config_to_ios_file(backup_config_ios_path):
     """
     # MISSION TODO 3: replace with the function that runs IOS commands and
     # returns output instead of printing it
-    MISSION('copy running-config {}\n'.format(backup_config_ios_path))
+    cli('copy running-config {}\n'.format(backup_config_ios_path))
     # END MISSION SECTION 3
 
     message = (
@@ -154,14 +154,14 @@ def main():
 
     # MISSION TODO 4: use the function that converts IOS path to
     # linux, which is defined in this file
-    backup_config_linux_path = MISSION(
+    backup_config_linux_path = convert_ios_path_to_linux(
         BACKUP_CONFIG_IOS_PATH
     )
     # END MISSION SECTION 4
 
     # MISSION TODO 5: check if the running config backup
     # under the linux path exists in the filesystem
-    if not os.path.isfile(MISSION):
+    if not os.path.isfile(backup_config_linux_path):
         # END MISSION SECTION 5
 
         # if not, save it and exit
@@ -173,7 +173,7 @@ def main():
     else:
         # MISSION TODO 6: use the function that gets configuration difference
         # between the current configuration and saved
-        config_diff_lines = MISSION(BACKUP_CONFIG_IOS_PATH)
+        config_diff_lines = get_config_diff(BACKUP_CONFIG_IOS_PATH)
         # END MISSION SECTION 6
         if config_diff_lines is not None:
             print('Changes have been found')

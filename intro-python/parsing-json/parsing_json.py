@@ -30,4 +30,4 @@ json_data = json.loads(json_text)
 
 # Display the type and contents of the json_data variable
 print("json_data is a", type(json_data))
-pprint(json_data)
+print(json_data)

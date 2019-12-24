@@ -34,7 +34,17 @@ def create_fortune_cookie_message(how_many_lucky_numbers: int) -> str:
     # TODO: Create a fortune cookie message by calling generate_fortune() and
     # generate_lucky_numbers() and then composing and returning the fortune
     # cookie's message.
-
+    lucky_numbers=generate_lucky_numbers(how_many_lucky_numbers)
+    fortune=generate_fortune()
+    text= "{}\nLucky Numbers: {}".format(fortune,lucky_numbers)
+    return text
+    #a = {}
+    #for i in lucky_numbers:
+     #   fortune=generate_fortune()
+      #  print("your lucky number is {} and your fortune messages is： {}".format(i,fortune))
+      #  a[i]=fortune
+    #return a
+    
     raise NotImplementedError()
 
 
@@ -47,6 +57,7 @@ def main():
     qty_lucky_numbers = int(qty_lucky_numbers.strip())
 
     # Create and display their Fortune
+    
     fortune_cookie_message = create_fortune_cookie_message(qty_lucky_numbers)
     print("\nHere is your fortune:\n")
     print(fortune_cookie_message)
